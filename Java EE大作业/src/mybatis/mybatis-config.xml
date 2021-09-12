@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--该配置文件配置了PO类的别名，并指定了SQL映射文件的位置-->
+<configuration>
+ <mappers>
+        <mapper resource="mybatis/mapper/UserMapper.xml"/>
+ 	    <mapper resource="mybatis/mapper/GoodstableMapper.xml"/>
+ 	    <mapper resource="mybatis/mapper/GoodstypeMapper.xml"/>
+ 	    <mapper resource="mybatis/mapper/OrderbaseMapper.xml"/>
+ 	    <mapper resource="mybatis/mapper/CarttableMapper.xml"/>
+ 	</mappers>
+</configuration>

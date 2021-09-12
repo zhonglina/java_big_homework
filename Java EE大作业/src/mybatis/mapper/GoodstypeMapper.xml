@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.GoodstypeDao">
+
+<!-- 查询商品类型 -->
+<select id="selectGoodstype"  parameterType="pojo.Goodstype" resultType="pojo.Goodstype" >
+		select * from goodstype
+	</select>
+<!-- 添加商品类型 -->
+<insert id="addGoodstype" parameterType="pojo.Goodstype">
+insert into goodstype(id,typename) values(#{id},#{typename})
+</insert>
+<!-- 删除商品类型 -->
+<delete id="deleteGoodstype" parameterType="pojo.Goodstype">
+delete from goodstype where id=#{id}
+</delete>
+<!-- 更新商品类型 -->
+ <update id="updateGoodstype" parameterType="pojo.Goodstype">
+  update goodstype
+    <set>
+   <if test="id != null">
+   id=#{id} ,
+   </if>
+   <if test="typename != null">
+   typename=#{typename}
+   </if>
+   </set>
+    where id = #{id}
+ </update>
+</mapper>

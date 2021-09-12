@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.GoodstableDao">
+
+<!-- 查询全部商品 -->
+<select id="selectGoodstable" parameterType="pojo.Goodstable" resultType="pojo.Goodstable">
+  select * from Goodstable
+ </select>
+<!-- 查询商品 -->
+ <select id="selectGoods" parameterType="String" resultType="pojo.Goodstable">
+  select * from Goodstable where gname like #{gname}
+ </select>
+<!-- 增加商品 -->
+ <insert id="addGoods" parameterType="pojo.Goodstable">
+ insert into goodstable (id,gname,goprice,grprice,gstore,gpicture,goodstype_id)
+  values (null, #{gname}, #{goprice}, #{grprice}, #{gstore}, #{gpicture}, #{goodstype_id})
+
+ </insert>
+ <!--  刪除商品-->
+ <delete id="removeGoods" parameterType="Integer">
+ delete from goodstable where id=#{id}
+ </delete>
+ <!--  更新商品信息（如库存）-->
+ <update id="updateGoods" parameterType="pojo.Goodstable">
+ update goodstable
+  <set>
+   <if test="gname != null">
+    gname = #{gname},
+   </if>
+   <if test="goprice != null">
+    goprice = #{goprice},
+   </if>
+   <if test="grprice != null">
+    grprice = #{grprice},
+   </if>
+   <if test="gstore != null">
+    gstore = #{gstore},
+   </if>
+   <if test="gpicture != null">
+    gpicture = #{gpicture},
+   </if>
+   <if test="goodstype_id != null">
+    goodstype_id = #{goodstype_id},
+   </if>
+  </set>
+  where id = #{id}
+ </update>
+ </mapper>

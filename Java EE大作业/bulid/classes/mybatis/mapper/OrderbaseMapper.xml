@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.OrderbaseDao">
+<!-- 添加一个订单-->
+	<insert id="addOrderbase" parameterType="pojo.Orderbase" >
+		insert into orderbase (id,user_account, amount, state, ordertime,receive) 
+		values (#{id},#{user_account}, #{amount}, 1, now(),0)
+	</insert>
+<!-- 订单付款后 -->
+	<update id="havepay" parameterType="pojo.Orderbase" >
+	update orderbase set state=0 where id=#{id}
+	</update>
+<!-- 确认收货后 -->
+	<update id="haverecive" parameterType="pojo.Orderbase" >
+	update orderbase set receive=2 where id=#{id}
+	</update>
+	<!-- 用户取消订单 -->
+	<update id="cancelOrder" parameterType="pojo.Orderbase" >
+	update orderbase set state=2 where id=#{id}
+	</update>
+	<!-- 查询订单 -->
+	<select id="selectOrderbase" resultType="pojo.Orderbase">
+	select * from orderbase
+	</select>
+	</mapper>
+	
